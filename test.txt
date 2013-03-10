@@ -1,2 +1,3 @@
 some text
 some more text...
+now I am logging to see if post-commit is getting called
