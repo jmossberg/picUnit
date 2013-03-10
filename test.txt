@@ -1,3 +1,4 @@
 some text
 some more text...
 now I am logging to see if post-commit is getting called
+now I have changed the name from post-commit to post-receive and also made it executable
