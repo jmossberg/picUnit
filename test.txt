@@ -6,3 +6,4 @@ new script...
 now I have made the new script belong to root.www-data
 now I am logging again
 logging with open and close in python
+a
