@@ -5,3 +5,4 @@ now I have changed the name from post-commit to post-receive and also made it ex
 new script...
 now I have made the new script belong to root.www-data
 now I am logging again
+logging with open and close in python
