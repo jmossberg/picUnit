@@ -8,3 +8,4 @@ now I am logging again
 logging with open and close in python
 a
 b
+c
