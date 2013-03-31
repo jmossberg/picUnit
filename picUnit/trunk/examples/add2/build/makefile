@@ -45,12 +45,13 @@ default: clean buildpic buildgcc runpic rungcc printpic printgcc
 
 clean:
 	@echo Cleaning files
-	rm -f $(ADD2_OUT_PIC)/*
+	rm -rf $(ADD2_OUT_PIC)
 	rm -f funclist
-	rm -f $(ADD2_OUT_GCC)/*
+	rm -rf $(ADD2_OUT_GCC)
 
 buildpic: clean
 	@echo PIC: Compiling add2 test with xc8 for Pic
+	mkdir -p $(ADD2_OUT_PIC)
 	$(PICUNIT_PIC_COMPILER) --CHIP=16F690 $(PICUNIT_PIC_FILES) $(PICUNIT_FILES) $(ADD2_FILES) $(ADD2_SELFTEST) -I$(PICUNIT_SRC) -I$(PICUNIT_PIC_INC_DIRS) -I$(ADD2_SELFTEST_HEADER) -I$(ADD2_HEADER) --OUTDIR=$(ADD2_OUT_PIC) --OUTPUT=intel -O$(ADD2_OUT_PIC)/$(PICUNIT_PIC_TARGET)
 	rm -f funclist
 
@@ -77,6 +78,7 @@ printpic: runpic
 
 buildgcc: clean
 	@echo GCC: Compiling add2 test with gcc
+	mkdir -p $(ADD2_OUT_GCC)
 	$(PICUNIT_GCC_COMPILER) -ggdb $(PICUNIT_GCC_FILES) $(PICUNIT_FILES) $(ADD2_FILES) $(ADD2_SELFTEST) -I$(PICUNIT_SRC) -I$(PICUNIT_GCC_INC_DIRS) -I$(ADD2_HEADER) -o$(ADD2_OUT_GCC)/$(PICUNIT_GCC_TARGET).o
 
 
