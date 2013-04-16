@@ -1,10 +1,10 @@
-#Myunit folders
+#picUnit folders
 PICUNIT=../../..
 PICUNIT_SRC=$(PICUNIT)/src
 PICUNIT_HEADER=$(PICUNIT_SRC)
 PICUNIT_TESTS=$(PICUNIT)/tests
 
-#Myunit source code files
+#picUnit source code files
 PICUNIT_FILES=$(PICUNIT_SRC)/picUnit.c
 PICUNIT_SELFTEST=$(PICUNIT_TESTS)/picUnit_test.c
 

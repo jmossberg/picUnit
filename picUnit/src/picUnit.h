@@ -10,8 +10,8 @@
 
 #define MAX_NUM_OF_TESTS 64
 
-static const uint8_t MYUNIT_TEST_FAILED = 1;
-static const uint8_t MYUNIT_TEST_PASSED = 0;
+static const uint8_t PICUNIT_TEST_FAILED = 1;
+static const uint8_t PICUNIT_TEST_PASSED = 0;
 
 static uint8_t testResults[(MAX_NUM_OF_TESTS / 8)];
 

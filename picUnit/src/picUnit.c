@@ -2,7 +2,7 @@
 
 uint8_t picUnit_run_test(uint8_t (*test_function)(), uint8_t * noOfTestsRun_p, uint8_t testResults[])
 {
-  if(MYUNIT_TEST_FAILED == test_function())
+  if(PICUNIT_TEST_FAILED == test_function())
   {
     picUnit_report_test_failed(noOfTestsRun_p, testResults);
   }
