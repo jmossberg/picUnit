@@ -39,12 +39,16 @@ clean:
 	rm -f $(GCC_OUT)/*
 
 buildforpic: clean
+	@echo Creating folder $(PIC_OUT) if does not exist
+	mkdir -p $(PIC_OUT)
 	@echo Compiling picUnit test with xc8 for Pic
 	$(PIC_COMPILER) --CHIP=16F690 $(PIC_FILES) $(MYUNIT_FILES) $(MYUNIT_SELFTEST) -I$(MYUNIT_SRC) -I$(PIC_INC_DIRS) --OUTDIR=$(PIC_OUT) --OUTPUT=intel -O$(PIC_OUT)/$(PIC_TARGET)
 	@echo Removing funclist file
 	rm -f funclist
 
 buildforgcc: clean
+	@echo Creating folder $(GCC_OUT) if does not exist
+	mkdir -p $(GCC_OUT)
 	@echo Compiling picUnit test with gcc
 	$(GCC_COMPILER) $(GCC_FILES) $(MYUNIT_FILES) $(MYUNIT_SELFTEST) -I$(MYUNIT_SRC) -I$(GCC_INC_DIRS) -o$(GCC_OUT)/$(GCC_TARGET).o
 
