@@ -10,7 +10,7 @@ static uint8_t test_1plus2() {
 }
 
 static uint8_t test_1plus3() {
-    picUnit_assert(2 == add2(1,3));
+    picUnit_assert(4 == add2(1,3));
     return 0;
 }
 
