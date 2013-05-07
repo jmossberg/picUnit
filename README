@@ -1,6 +1,13 @@
-picUnit is a unit testing framework to be used with PICkit2 and the microcontroller PIC16F690
+picUnit is a unit testing framework to be used with PICkit2 and the microcontroller PIC16F690. It can be used to try out Test Driven Development.
 
-Howto use picUnit
+Contents
+========
+1. Howto use picUnit
+2. Limitations
+3. Test results format
+
+1. Howto use picUnit
+====================
 
 1. Write tests (see add2 example tests)
 2. Create a makefile to build your application with your tests and picUnit. The makefile can be based on the makefile used in the add2 example.
@@ -13,8 +20,28 @@ Howto use picUnit
 5b. For PIC you have to use pk2cmd to read the EEPROM of the PIC16F90 and save to a textfile
 6. Use python scipt to generate xml report compatible with Jenkins from textfile with results
 
-Limitations
+2. Limitations
+==============
+
 - Test case ends when first assert fails
 - No fixtures
 - Not possible to see on what line the assert failed
 - 64 is the maximum amount of tests
+
+3. Test results format
+======================
+
+The test results are stored in the EEPROM of the PIC16F690. The EEPROM can be retrieved from the PIC16F690 using the pk2cmd tool. The numbers are written in hexadecimal. The output from the gcc version is made to be exactly like the output of the EEPROM using pk2cmd tool.
+
+Byte #	Description
+0	The number of tests run
+1-8	Each bit represents the results from one test.
+        A bit value of 1 represents a failed test.
+        A bit value of 0 represents a passed test.
+
+
+Example 1:
+Two tests, both passed: 02 00 00 00 00 00 00 00 00
+
+Example 2:
+Three tests, all failed: 03 07 00 00 00 00 00 00 00
