@@ -3,6 +3,26 @@ import getopt
 import subprocess
 
 
+def openInputFile():
+    return 1
+
+def getNumberOfTests(resultString):
+    numberOfTests = int(resultString[0:2], 16)
+    return numberOfTests
+
+" First test is denoted with testNo = 0  "
+def getTestResult(resultString, testNo):
+    "Get word, One word is 2 bytes, First byte is wordIndex = 0"
+    wordIndex = testNo / 16 
+    startPosition = 3 + (3 * wordIndex) 
+    endPosition = startPosition + 2
+    word = int(resultString[startPosition:endPosition], 16) 
+
+    "Get bit"
+    noOfBitsToShift = testNo % 16
+    bit = (word >> noOfBitsToShift) & 1
+    return bit
+
 def readEeprom(eeprom_file):
 	f1 = open(eeprom_file, mode="r")
 	f1.readline()
