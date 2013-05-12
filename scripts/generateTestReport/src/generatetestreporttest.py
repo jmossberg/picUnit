@@ -5,10 +5,6 @@ import unittest
 import xmlrunner
 
 class GenerateTestReportTests(unittest.TestCase):
-    def testOpenInputFile(self):
-        result = generatetestreport.openInputFile()
-        self.assertEqual(1, result)
-
     def testGetNumberOfTests(self):
         resultString = "02 00 00 00 00 00 00 00 00"
         result = generatetestreport.getNumberOfTests(resultString) 
@@ -50,6 +46,10 @@ class GenerateTestReportTests(unittest.TestCase):
         result = generatetestreport.getTestResult(resultString, testNo)
         self.assertEqual(1, result)
 
+    def testGetResultStringFromFile(self):
+        resultString = generatetestreport.getResultStringFromFile("bla")
+        noOfTests = generatetestreport.getNumberOfTests(resultString) 
+        self.assertEqual(2, noOfTests)
         
 if __name__ == "__main__":
     unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports')) 
