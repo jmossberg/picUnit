@@ -3,6 +3,7 @@
 import generatetestreport
 import unittest
 import xmlrunner
+import pymock
 
 class GenerateTestReportTests(unittest.TestCase):
     def testGetNumberOfTests(self):
@@ -46,10 +47,22 @@ class GenerateTestReportTests(unittest.TestCase):
         result = generatetestreport.getTestResult(resultString, testNo)
         self.assertEqual(1, result)
 
+class TestOverRide(pymock.PyMockTestCase):
+
+    def setUp(self):
+        super(TestOverRide, self).setUp()
+	
+    def tearDown(self):
+        super(TestOverRide, self).tearDown()
+
     def testGetResultStringFromFile(self):
-        resultString = generatetestreport.getResultStringFromFile("bla")
-        noOfTests = generatetestreport.getNumberOfTests(resultString) 
-        self.assertEqual(2, noOfTests)
+        test_string = "test_string"
+        mock_file = self.mock()
+        self.expectAndReturn(mock_file.readline(), "02 00 00 00 00 00 00 00 00")
+        mock_file.close()
+        self.replay()
+        resultString = generatetestreport.getResultStringFromFile(mock_file)
+        self.verify()
         
 if __name__ == "__main__":
     unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports')) 

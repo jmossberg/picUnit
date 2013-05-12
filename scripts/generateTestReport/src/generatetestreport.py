@@ -1,13 +1,12 @@
 import sys
 import getopt
 import subprocess
-from mockfileobject import open
+#from mockfileobject import open
 
 
-def getResultStringFromFile(fileName):
-    f1 = open(fileName, mode="r")
-    resultString = f1.readline()
-    f1.close()
+def getResultStringFromFile(fileObject):
+    resultString = fileObject.readline()
+    fileObject.close()
     return resultString
 
 def getNumberOfTests(resultString):
